@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNet.Identity
+@using JobWebSite.Models
+
+@if (Request.IsAuthenticated) // if the user that send request is logedin
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
+    {
+        var db = new ApplicationDbContext();
+        var UserId = User.Identity.GetUserId();
+        var CurrentUser = db.Users.Where(a => a.Id == UserId).SingleOrDefault();
+
+
+        @Html.AntiForgeryToken()
+    <ul class="nav navbar-nav navbar-right down">
+
+        @*<li  style="font-size:small">
+                @Html.ActionLink("مرحبا " + User.Identity.GetUserName(), "Index", "Manage")
+        </li>
+
+        <li  style="font-size:small">
+           
+        </li>*@
+
+
+        <il class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user icon"></span>
+                <strong class="icon">مرحبا بك يا : @CurrentUser.UserName</strong>
+                <span class="glyphicon glyphicon-chevron-down icon"></span>
+            </a>
+            <ul class="dropdown-menu" style="margin-top:12%">
+                <li>
+                    <div class="navbar-user">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p class="text-center">
+                                    <span class="glyphicon glyphicon-user img-size" ></span>
+                                </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <p class="text-right">
+                                    <strong>
+                                        @CurrentUser.UserName
+                                    </strong>
+                                </p>
+                                @if (CurrentUser.UserType == "الناشرون")
+                                {
+                                    <div class="buttons">
+                                        <a href="~/Home/GetJobsPublisher" class="btn btn-success"> الوظائف التى قومت بنشرها</a>
+                                    </div>
+                                    <div class="buttons">
+                                        <a href="~/Jobs/Create" class="btn btn-success btn-block" style="font-size:small"> نشر وظيقه جديدة</a>
+                                    </div>
+
+                                    <style>
+                                        .buttons, AND {
+                                            margin-top: 1%;
+                                        }
+                                    </style>
+
+                                }
+                                else
+                                {
+                                    <div class="buttons">
+                                        <a href="~/Home/GetJobsByUser" class="btn btn-success btn-block" style="font-size:small"> الوظائف التى قومت التقدم اليها</a>
+                                    </div>
+                                    <style>
+                                        .buttons {
+                                            margin-top: 9%;
+                                        }
+                                    </style>
+                                }
+                                <div class="buttons">
+                                    <a href="~/Account/EditPosfile" class="btn btn-primary btn-block">تعديل الحساب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="divider"></li>
+
+                <li>
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p>
+                                    <a href="javascript:document.getElementById('logoff').submit()" class="btn btn-danger btn-block"> تسجيل الخروج </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </il>
+
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>
+            <a href="~/Account/Login" >
+                <i class="glyphicon glyphicon-home"> </i> الدخول
+            </a>
+        </li>
+
+        <li>
+            <a href="~/Account/Register">
+                <i class="glyphicon glyphicon-lock"></i>
+                اشتراك
+            </a>
+        </li>
+
+    </ul>
+}
+
+
+<style>
+    .dropdown-menu span, .dropdown-menu strong {
+        color: black;
+    }
+
+    .img-size {
+        font-size: 90px;
+        margin-top: 36%;
+    }
+
+    .navbar-user {
+        padding: 10px;
+        padding-bottom: 0px;
+        width: 350px;
+    }
+
+    .dropdown .icon {
+        color: #e7e7e7;
+    }
+
+    .dropdown:hover .icon {
+        color: #fff;
+    }
+
+    .down {
+        margin: 1% auto;
+    }
+
+    .buttons {
+        width: 104%;
+    }
+</style>
+

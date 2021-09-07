@@ -1,0 +1,58 @@
+﻿
+@font-face {
+    font-family: 'GE_SS_Two_Bold';
+    src: url('font/GE_SS_Two_Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'DroidKufi-Regular';
+    src: url('font/DroidKufi-Regular.ttf') format('truetype');
+}
+
+
+
+.navbar-default {
+    background-color: #0c5c82;
+    border-color: #e7e7e7;
+}
+
+    .navbar-default .navbar-nav > li > a {
+        color: #e7e7e7;
+        font-family: 'GE_SS_Two_Bold';
+    }
+
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #fff;
+        }
+
+
+
+
+
+
+.myfooter {
+    background-color: cornflowerblue;
+    font-family: 'GE_SS_Two_Bold';
+    text-align: justify;
+}
+
+    .myfooter a, p {
+        color: azure
+    }
+
+
+    .myfooter ul {
+        list-style-type: none
+    }
+
+    .myfooter h3, ul, p {
+        margin-bottom: 15px;
+        font-family: 'DroidKufi-Regular';
+    }
+
+.subfooter {
+    background-color: #0c5c82;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

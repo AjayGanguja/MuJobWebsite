@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width , initial scale=1" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+
+</head>
+<body style="position:relative">
+
+    <!-- Navbar -->
+    <nav class=" navbar navbar-default navbar-fixed-top ">
+        <div class="container">
+            <div class=" navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                </button>
+                <a href="#" class="navbar-brand">
+                    <img src="" />
+                </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ">
+
+                    <li>
+                        <a href="~/Home">
+                            <i class="glyphicon glyphicon-home"> </i>  الرئيسيه
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="~/Home/About">
+                            <i class="glyphicon glyphicon-info-sign"> </i>  عن الموقع
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="~/Home/Contact">
+                            <i class="glyphicon glyphicon-envelope">  </i> تواصل معنا
+                        </a>
+                    </li>
+
+                    <li>
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                        {
+                            <input name="searchName" id="searchName" placeholder="ابحث عن " />
+                        }
+                    </li>
+
+                </ul>
+
+                <!-- partial login -->
+                @Html.Partial("_login")
+
+
+            </div>
+        </div>
+
+    </nav>
+    <div class="container " style="margin:3% auto; padding-top:1.3%; min-height:344px">
+        @RenderBody()
+
+    </div>
+
+
+    <!--Footer-->
+    <footer class="myfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>
+                        <i class="glyphicon glyphicon-question-sign"></i>
+                        من نحن؟
+                    </h3>
+                    <p>
+                        السلام عليكم ورحمة الله وبركاته، تسعدنا زيارتكم لنا على المدونة الشخصية لخالد السعداني حيث يتم بث مختلف مواده المكتوبة والمرئية المتعلقة بعالم البرمجة.
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>
+                        <i class="glyphicon glyphicon-globe"></i>
+                        روابط هامة
+                    </h3>
+                    <ul>
+                        <li><a href="#">وظائف للقطاع العام</a></li>
+                        <li><a href="#">وظائف للقطاع الخاص</a></li>
+                        <li><a href="#">وظائف خارج البلاد</a></li>
+                        <li><a href="#">وظائف متنوعة</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        تواصل معنا
+                    </h3>
+                    <ul>
+                        <li><a href="#">صفحتنا على الفيسبوك</a></li>
+                        <li><a href="#">تابعنا على تويتر</a></li>
+                        <li><a href="#">شاهدنا على اليوتيوب</a></li>
+                        <li><a href="#">اترك لنا رسالة</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="subfooter">
+            <span>جميع الحقوق محفوظة لموقع التوظيف - 2017</span>
+        </div>
+    </footer>
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required:false)
+
+    <style>
+        body {
+            height: 584px;
+        }
+
+
+        #searchName {
+            width: 130px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            padding: 3px 20px;
+            margin-top: 10px;
+            transition:width 0.4s ease-in-out;
+        }
+
+        #searchName:focus {
+            width: 100%
+        }
+    </style>
+</body>
+
+</html>
